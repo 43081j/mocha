@@ -18,8 +18,8 @@ const proxyLoadOptions = ({
   rewiremock.proxy(modulePath, r => ({
     'node:fs': r.with({readFileSync}).directChildOnly(),
     [mocharcPath]: defaults,
-    'find-up': r
-      .by(() => (findupSync ? {sync: findupSync} : {}))
+    'empathic/find': r
+      .by(() => ({up: findupSync}))
       .directChildOnly(),
     [configPath]: r.with({findConfig, loadConfig}).directChildOnly()
   })).loadOptions;
